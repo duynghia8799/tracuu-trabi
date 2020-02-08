@@ -8,7 +8,7 @@
     <div class="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " id="m_ver_menu" m-menu-dropdown-timeout="500" m-menu-scrollable="1" m-menu-vertical="1" style="position: relative;">
         <ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow ">
             <li aria-haspopup="true" class="m-menu__item m-menu__item--active">
-                <a class="m-menu__link " href="{{route('homepage')}}">
+                <a class="m-menu__link " href="{{route('dashboard')}}">
                     <i class="m-menu__link-icon flaticon-line-graph">
                     </i>
                     <span class="m-menu__link-title">
@@ -51,30 +51,7 @@
                     </ul>
                 </div>
             </li>
-            <li aria-haspopup="true" class="m-menu__item m-menu__item--submenu" m-menu-submenu-toggle="hover">
-                <a class="m-menu__link m-menu__toggle" href="javascript:;">
-                    <i class="m-menu__link-icon flaticon-tool">
-                    </i>
-                    <span class="m-menu__link-text">
-                        Trình độ
-                    </span>
-                    <i class="m-menu__ver-arrow la la-angle-right">
-                    </i>
-                </a>
-                <div class="m-menu__submenu ">
-                    <ul class="m-menu__subnav">
-                        <li aria-haspopup="true" class="m-menu__item ">
-                            <a class="m-menu__link " href="{{route('courses.index')}}">
-                                <i class="m-menu__link-icon la la-list-ol">
-                                </i>
-                                <span class="m-menu__link-text">
-                                    Danh sách
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+
         </ul>
     </div>
     <!-- END: Aside Menu -->

@@ -7,7 +7,7 @@
                     <div class="m-stack m-stack--ver m-stack--general">
                         <div class="m-stack__item m-stack__item--middle m-brand__logo">
                             <a href="{{route('homepage')}}" class="m-brand__logo-wrapper">
-                                <img alt="" src="{{ asset(config('common.login.logo')) }}" />
+                                <img alt="" src="{{ asset(config('common.image.logo')) }}" />
                             </a>
                         </div>
                         <div class="m-stack__item m-stack__item--middle m-brand__tools">
