@@ -265,9 +265,8 @@ class StudentController extends Controller
     	if ($request->hasFile('import_excel')) {
     		$path = $request->file('import_excel')->getRealPath();
     		
-    		// dd($path);
-    		// $data = Excel::load($path)->get();
-    		$data = Excel::import(new StudentImport, $path);
+    		
+    		$data = Excel::import(new StudentImport, $request->file('import_excel'));
     		// dd($data);
     		$request->session()->flash('success', 'Import thành công!');
         	return redirect()->route('students.index');
