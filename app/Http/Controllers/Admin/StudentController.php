@@ -25,9 +25,11 @@ class StudentController extends Controller
     	$levels = Levels::all();
         return view('admin.student.index',compact('levels'));
     }
+    
 
     public function datatables(Request $request)
     {
+        
         if(request()->ajax()) {
             if (!empty($request->get('searchByLevel'))) {
                 $id = $request->get('searchByLevel');
@@ -35,7 +37,7 @@ class StudentController extends Controller
                     $query->where('id_level',$id);
                 })->get();
             } else {
-                $students = Students::get();
+                $students = Students::all();
             }
             return Datatables::of($students)
                    ->editColumn('name', function ($student) {
@@ -316,13 +318,5 @@ class StudentController extends Controller
         return redirect()->back();
     }
 
-    // public function profil($id)
-    // {
-    //     // id = id of student
-    //     $student = Students::findOrFail($id);
-    //     $check_student_level = StudentLevel::where('id_student',$student->id)->get();
-    //     dd($check_student_level->id);
-    //     $score_normal = ScoreNormal::where('student_id',$id)->get();
-    //     return view('admin.student.result',compact(['resultOfStudent','student']));
-    // }
+
 }

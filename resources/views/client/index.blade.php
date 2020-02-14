@@ -146,7 +146,7 @@
 		                            </input>
 		                            <span class="m-form__help">
                                         <code>
-                                        	Nhập chính xác tháng số CMND hoặc hộ chiếu đã đăng kí với TRABI
+                                        	Nhập chính xác số CMND hoặc hộ chiếu đã đăng kí với TRABI
                                         </code>
                                     </span>
 		                            @if ($errors->has('student_code'))
@@ -240,7 +240,7 @@
 				                                       	<td>
 				                                            {{$result->subject->subject_name}}
 				                                        </td>
-				                                       	<td class="text-center">
+				                                        <td class="text-center">
 				                                            {{$result->score_normal}}
 				                                        </td>
 				                                    </tr>
@@ -251,17 +251,15 @@
 							                    	<td colspan="1">Tổng số điểm</td>
 							                    	<td class="text-center">{{$total}}</td>
 						                    	</tr>
-						                    	<tr>
-							                    	<td colspan="1">Trạng thái</td>
-							                    	<?php
-														if ( $result->status == config('common.status.passed') ) { ?>
-															<td><span class="btn btn-success btn-block">Đạt</span></td>
-														<?php } else { ?>
-															<td><span class="btn btn-danger btn-block">Chưa đạt</span></td>
-													<?php } ?>						                    	
-							                    </tr>
 	                                    </tbody>
 	                                </table>
+	                                <span class="text-danger"><b>Lưu ý</b></span>
+	                                <span class="note">
+	                                	<ul>
+	                                		<li>Phần viết (Schriftliche Prüfung) có số điểm lớn hơn hoặc hoặc bằng 135 là đỗ, thấp hơn là trượt.</li>
+	                                		<li>Phần nói (Mündlich Prüfung) có số điểm lớn hơn hoặc hoặc bằng 45 là đỗ, thấp hơn là trượt .</li>
+	                                	</ul>
+	                                </span>
 	                            </div>
 	                        </div>
 	                    </div>
