@@ -16,7 +16,7 @@ class CreateScoresNormalTable extends Migration
         Schema::create('scores_normal', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('subject_id');
-            $table->integer('score_normal')->nullable();;
+            $table->double('score_normal',8,2)->nullable();;
             $table->integer('id_student_level');
             $table->timestamps();
         });

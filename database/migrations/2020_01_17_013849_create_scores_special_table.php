@@ -16,7 +16,7 @@ class CreateScoresSpecialTable extends Migration
         Schema::create('scores_special', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_student_level');
-            $table->integer('score_special')->nullable();;
+            $table->double('score_special',8,2)->nullable();;
             $table->timestamps();
         });
     }

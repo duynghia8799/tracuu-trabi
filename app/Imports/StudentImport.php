@@ -32,15 +32,15 @@ class StudentImport implements ToCollection
     	foreach (array_splice($data_excel,1,count($data_excel)) as $value) {
 	    	$subjects = Subjects::all()->toArray();
 		    $scores = [$value[6],$value[7]];
-    		for ($i = 0 ; $i < count($scores) ; $i++ ) {
-	            if ( $scores[$i] == null && $value[8] == null ) {
-	                session()->flash('error', 'Trong file excel này, dữ liệu điểm của 1 hoặc nhiều học viên không phù hợp với hệ thống');
-	                return redirect()->route('students.create');
-	            } else if ( $scores[$i] != null && $value[8] != null ) {
-	                session()->flash('error', 'Trong file excel này, dữ liệu điểm của 1 hoặc nhiều học viên không phù hợp với hệ thống');
-	                return redirect()->route('students.create');
-	            }
+
+	        if ( $value[6] != null && $value[7] != null && $value[8] != null ) {
+	        	session()->flash('error', 'Trong file excel này, dữ liệu điểm của 1 hoặc nhiều học viên đang được nhập cả 3 phần điểm');
+	            return redirect()->route('students.create');
+	        } else if ( $value[6] == null && $value[7] == null && $value[8] == null ) {
+	        	session()->flash('error', 'Trong file excel này, dữ liệu điểm của 1 hoặc nhiều học viên chưa được nhập điểm');
+	            return redirect()->route('students.create');
 	        }
+
 	    	$check_student = Students::where('student_code',$value[1])->first();
 	    	
 	    	if ($check_student == null) {
@@ -102,6 +102,7 @@ class StudentImport implements ToCollection
 	    	}
 	    	else {
 	    		$check_register = StudentLevel::where('id_student',$check_student->id)->where('id_level',$value[4])->where('term',date('Y-m-d', strtotime($value[5])))->first();
+
 	    		if ($check_register == null) {
 	    		
 		    		if ($value[8] == null) {
@@ -153,7 +154,7 @@ class StudentImport implements ToCollection
 
 	    		}
 	    		else {
-	    			session()->flash('error', 'Thông tin về 1 hoặc nhiều học viên trong file excel này đã tồn tại trong hệ thống! Những thông tin của các học viên còn lại (nếu có) vẫn sẽ được lưu vào hệ thống!');
+	    			session()->flash('error', 'Thông tin về 1 hoặc nhiều học viên trong file excel này đã tồn tại trong hệ thống! Những thông tin mới của các học viên còn lại(nếu có) cần phải tạo ra file excel mới!');
         			return redirect()->route('students.create');
 	    		}
 	    	}
